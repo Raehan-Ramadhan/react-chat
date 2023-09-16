@@ -1,7 +1,7 @@
 import './App.css';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -20,7 +20,7 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
-  const [user] = useAuthState();
+  const [user] = useAuthState(auth);
 
   return (
     <div className="App">
@@ -54,7 +54,7 @@ function SignOut() {
 
 function ChatRoom() {
   const messagesref = firestore.collection('messages');
-  const query = messagesref.orderBy('createdAT').limit(25);
+  const query = messagesref.orderBy('createdAt').limit(25);
 
 
   const [messages] = useCollectionData(query, { idField: 'id' });
