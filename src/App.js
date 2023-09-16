@@ -6,7 +6,6 @@ import 'firebase/compat/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
-import e from 'express';
 
 firebase.initializeApp({
   apiKey: "AIzaSyBE9YgYNtNXtA6uCu0r3E1uHSomOlnqVf4",
@@ -94,7 +93,7 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  const {text, uid} = props.message;
+  const {text, uid, photoURL} = props.message;
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'recieved';
 
