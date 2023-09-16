@@ -16,12 +16,18 @@ firebase.initializeApp({
   measurementId: "G-NJVYYNS7LP"
 })
 
+const [user] = useAuthState();
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
 
       </header>
+
+      <section>
+        {user ? <ChatRoom /> : <SignIn />}
+      </section>
     </div>
   );
 }
